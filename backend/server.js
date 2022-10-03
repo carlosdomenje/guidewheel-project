@@ -3,10 +3,10 @@ const { app } = require('./app');
 
 const { APP_PORT, APP_URL } = process.env;
 
-const appPort = APP_PORT || 3001;
+const appPort = APP_PORT || 3002;
 
 const server = app.listen(appPort, () => {
-    logger.info(`[Server] listening at: ${APP_URL}:${APP_PORT}`);
+    logger.info(`[Server] listening at: ${APP_URL}:${appPort}`);
 });
 
 module.exports = {
