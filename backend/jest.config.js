@@ -4,10 +4,10 @@
  */
 
 module.exports = {
-    setupFiles: ['./test/setEnvVars.js'],
+    setupFiles: ['./src/test/setEnvVars.js'],
     coveragePathIgnorePatterns:[
       '/node_modules/',
-      '<rootDir>/middlewares/'
+      '<rootDir>/src/middlewares/'
     ],
     // All imported modules in your tests should be mocked automatically
     // automock: false,
