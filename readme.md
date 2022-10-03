@@ -14,9 +14,9 @@ Go to **Deployment** for running the project.
 ### Requirements 📋
 
 - [Docker](https://docs.docker.com/get-docker/)
-
+ **Docker version 20.10.17, build 100c701**
 - [Docker Compose](https://docs.docker.com/compose/install/) 
-
+  **docker-compose version 1.29.2, build 5becea4c**
 Both needed to run the project
 
 Installation Guide for MAC
