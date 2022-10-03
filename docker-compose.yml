@@ -1,7 +1,12 @@
 version: '3.9'
 
 services: 
-
+  client:
+    image: nginx
+    ports:
+      - 8000:80
+    volumes:
+      - ./web:/usr/share/nginx/html
 # # # # # Backend Service for Clients and Devices in Nodejs/
   backend:
        
@@ -11,7 +16,7 @@ services:
     container_name: backend
     hostname: backend
     ports:
-      - "8000:8000" 
+      - "3002:3002" 
     restart: on-failure
     networks:
       - main-network   
