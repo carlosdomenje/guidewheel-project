@@ -1,14 +1,31 @@
-
+/**
+ * This function make estimate Aparent Energy Value
+ * doing avg of Aparent Power (Ssum) x 0.016 to take the result in Watts per hour
+ * Delta Time is every minute so 60 s / 3600 s -> 0.016 hs
+ * @input {metrics key}
+ * @returns {Energy Value} Value of Energy in 1 minute
+ */
 function estimateAparentEnergyValue(metrics) {
     const { Ssum } = metrics;
     return (Ssum.avgvalue * 0.016 )
  }
-
+/**
+ * This function make estimate Active Energy Value
+ * doing avg of Active Power (Psum) x 0.016 to take the result in Watts per hour
+ * Delta Time is every minute so 60 s / 3600 s -> 0.016 hs
+ * @input {metrics key}
+ * @returns {Energy Value} Value of Energy in 1 minute
+ */
 function estimateEnergyValue(metrics) {
    const { Psum } = metrics;
    return (Psum.avgvalue * 0.016)
 }
 
+/**
+ * Just in case Psum is null we can estimate like sum of Active Power in each Phase.
+ * @input {metrics key}
+ * @returns {Psum} 
+ */
 function estimatePsum(metrics){
     const { P1, P2, P3 } = metrics;
     
@@ -20,15 +37,20 @@ function estimatePsum(metrics){
     return Psum
 }
 
+/**
+ * This function check for data integrity, looking for (in this case) null data 
+ * in Psum, Engy, and apparentEngy keys.
+ * If detect anyone, we call funtions to estimate these values with the rest of the data.
+ * Then, we order data from old data to new data taking tots key in object.
+ * @input {data}
+ * @returns {CleanData} Get clean data to make analisys.
+ */
 exports.checkNullDataAndConvertTime = (data) => {
     
     data.forEach((measure, index, dataArr) => {
        
         const {metrics, fromts, tots} = measure;
-        
-        //dataArr[index].fromts = new Date(parseInt(fromts))
-        //dataArr[index].tots = new Date(parseInt(tots))
-                             
+    
 
         if (metrics.Psum == null){
             
@@ -71,6 +93,12 @@ exports.checkNullDataAndConvertTime = (data) => {
     return data;
 }
 
+/**
+ * This function get avg of Psum (taking max value in each measure) from all data, 
+ * this will be our max reach value to estimate IDLE and INACTIVE modes.
+ * @input {data}
+ * @returns {Psum Avg} Average of all Psum maxvalue in each measure.
+ */
 exports.getPmax = (data) => {
 
     let pMax = 0

@@ -9,10 +9,14 @@ const { estimateUnloadedData,
     } = require ('../services/db.service');
 
 
-
+/**
+ * Get Machine Data
+ * 
+ * @returns {data} response with code 200 and all data needed for analisys.
+ */
 exports.getAllMachineData = async (req,res) => {
     try {
-        console.log('Get all data');
+        
         const measures = await readCSVData();
         const allData = await getAllClearData(measures);
         const {idleTime,idleThreshold} =  estimateInactiveData(allData) 
@@ -32,6 +36,12 @@ exports.getAllMachineData = async (req,res) => {
     }
     
 }    
+
+/**
+ * Get Unload Data from Machine
+ * 
+ * @returns {data} response with code 200 and all data needed for analisys.
+ */
 exports.getUnloadedMachineData = async (req,res) => {
     try {
         measures = await readCSVData();
@@ -49,7 +59,11 @@ exports.getUnloadedMachineData = async (req,res) => {
     }
    
 }
-
+/**
+ * Get Inactive Data from Machine
+ * 
+ * @returns {data} response with code 200 and all data needed for analisys.
+ */
 exports.getInactiveMachineData = async (req,res) => {
 
     try {
@@ -71,7 +85,11 @@ exports.getInactiveMachineData = async (req,res) => {
 
 }
 
-
+/**
+ * Get Load Data from Machine
+ * 
+ * @returns {data} response with code 200 and all data needed for analisys.
+ */
 exports.getLoadedMachineData = async (req,res) => {
 
     try {

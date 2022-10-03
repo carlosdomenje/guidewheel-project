@@ -1,5 +1,3 @@
-Author: Domenje Carlos R. - 2022
-
 # Backend - Guidewheel Home Project
 
 Machine data analisys
@@ -22,55 +20,51 @@ git clone https://github.com/carlosdomenje/guidewheel-project.git
 
 ```
 
-## Deployment 📦
+## Install dependencies
 
-To deploy this project first go to project folder:
-
-```
-cd guidewheel-home-project
-```
-Open your Terminal and type this command:
-
-```
-docker-compose up -d
+You can install dependencies as usual with:
+```bash
+  npm install
 ```
 
-Now, go to your Browser and type this URL:
-```
-http://localhost:8000/
+## Development
 
-```
+For development mode, you can run this script and watch for logs or any problem.
 
-For login, you can use any word that you want, is only demo page:
-Ex:
-```
-user: guidewheel
-password: guidewheel
+```bash
+  npm run dev
 ```
 
-If you want to finish the project type:
+## Deployment
 
+To deploy this integration
+
+```bash
+  npm run start
 ```
-docker-compose down
+## Tests
 
+To run tests
+
+```bash
+  npm run test
 ```
+** At this moments was added some unit tests. No integration tests yet.
 
-## Application Images 📳️
+## Environment Variables
 
-![Image1](/app_images/img1.png)
-![Image2](/app_images/img2.png)
-![Image3](/app_images/img3.png)
-## Used Tools 🛠️
+To run this project, you will need to add the following environment variables to your .env file
 
-* [Docker](https://docs.docker.com/)
-* [NodeJS](https://nodejs.org/en/)
-* [Flutter](https://flutter.dev/)
-* [Nginx](https://www.nginx.com/)
+### API
 
+`NODE_ENV` : dev / stage / prod / test
+
+`APP_URL` : Ngnix backend url
+
+`APP_PORT` : Port that the server will listen to
 ## Contribute 🖇️
 
 You can contribute with this project making a pull request.
-
 
 ## Versioning 📌
 

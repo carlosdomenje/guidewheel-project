@@ -6,7 +6,11 @@ const logger = require ('../utils/logger');
 
 const { array } = require ('get-stream');
 
-
+/**
+ * Read CSV data. Simulates data readed from DB
+ * 
+ * @returns {data} response with a json object with measures information.
+ */
 exports.readCSVData = async () => {
     try {
         const parseStream = parse({ headers: true });
