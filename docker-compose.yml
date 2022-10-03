@@ -1,0 +1,24 @@
+version: '3.9'
+
+services: 
+
+# # # # # Backend Service for Clients and Devices in Nodejs/
+  backend:
+       
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    container_name: backend
+    hostname: backend
+    ports:
+      - "8000:8000" 
+    restart: on-failure
+    networks:
+      - main-network   
+
+ 
+# Networks between internal containers
+networks:
+  main-network:
+    name: main-network
+        
